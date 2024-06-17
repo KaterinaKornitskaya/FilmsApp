@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "My Page";
+}
+
+<section class="mainSection">
+    @foreach (var film in ViewBag.Films)
+    {
+        <section class="filmSection"> 
+           
+            <section class="posterSection">
+                <img src="@film.Image"/>
+            </section>
+            <section class="infoSection">
+                <div class="nameDiv">
+                    <p>@film.Name</p>
+                </div>
+                <div class="yearDiv">
+                    <p>@film.Year</p>
+                </div>
+                <div class="genreDiv">
+                    <p>@film.Genre</p>
+                </div>
+                <div class="directorDiv">
+                    <p>Режисер: @film.Director</p>
+                </div>
+                <div class="actorsDiv">
+                    <p>Акторський склад: @film.Actors</p>
+                </div>
+                <div class="descriptionDiv">
+                    <p>@film.Description</p>
+                </div>
+            </section>
+        </section>
+    }
+  
+</section>
+
+
