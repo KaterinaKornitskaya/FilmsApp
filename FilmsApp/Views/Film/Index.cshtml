@@ -1,38 +1,61 @@
-﻿@{
+﻿@model IEnumerable<FilmsApp.Models.Film>
+
+@{
     ViewData["Title"] = "My Page";
 }
 
 <section class="mainSection">
-    @foreach (var film in ViewBag.Films)
+    @foreach (var film in Model)
     {
         <section class="filmSection"> 
            
             <section class="posterSection">
-                <img src="@film.Image"/>
+                <img src="@Html.DisplayFor(e=>film.Image)"/>
             </section>
-            <section class="infoSection">
+            <section class="nameSection">
                 <div class="nameDiv">
-                    <p>@film.Name</p>
+                    <p>@Html.DisplayFor(e => film.Name)</p>
                 </div>
                 <div class="yearDiv">
-                    <p>@film.Year</p>
+                    <p>@Html.DisplayFor(e => film.Year)</p>
                 </div>
                 <div class="genreDiv">
-                    <p>@film.Genre</p>
+                    <p>@Html.DisplayFor(e => film.Genre)</p>
                 </div>
                 <div class="directorDiv">
-                    <p>Режисер: @film.Director</p>
-                </div>
-                <div class="actorsDiv">
-                    <p>Акторський склад: @film.Actors</p>
-                </div>
-                <div class="descriptionDiv">
-                    <p>@film.Description</p>
+                    <p>Режисер: @Html.DisplayFor(e => film.Director)</p>
                 </div>
             </section>
+            <section class="infoSection">
+               
+                <div class="descriptionDiv">
+                    @{
+                        string substrFromDescription = "";
+                        if (film.Description.Length>=150)
+                        {
+                            substrFromDescription = film.Description.Substring(0, 150) + "...";
+                        }
+                        else
+                        {
+                            substrFromDescription = film.Description;
+                        }
+                    }
+                    <p>@substrFromDescription</p>
+                </div>
+            </section>
+            <section class="btnDetailsSection">
+                <button type="button" class="btn btn-outline-primary">
+                    <a asp-action="Details" asp-route-id="@film.ID">Більше</a>
+                </button>
+            </section>
+           
         </section>
     }
-  
+
+   
 </section>
+<button type="button" class="btn btn-primary">
+    <a asp-action="Create">Додатий новий фільм</a>
+</button>
 
 

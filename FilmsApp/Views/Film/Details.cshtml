@@ -1,0 +1,47 @@
+﻿@model FilmsApp.Models.Film
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="filmDetails">
+
+    <section class="posterDetails">
+        <img src="@Html.DisplayFor(model=>model.Image)" />
+    </section>
+    <section class="infoDetails">
+        <div class="nameDiv">
+            <p>@Html.DisplayFor(model => model.Name)</p>
+        </div>
+        <div class="yearDiv">
+            <p>@Html.DisplayFor(model => model.Year)</p>
+        </div>
+        <div class="genreDiv">
+            <p>@Html.DisplayFor(model => model.Genre)</p>
+        </div>
+        <div class="directorDiv">
+            <p>Режисер: @Html.DisplayFor(model => model.Director)</p>
+        </div>
+        <div class="actorsDiv">
+            <p>Акторський склад: @Html.DisplayFor(model => model.Actors)</p>
+        </div>
+        <div class="descriptionDiv">
+            <p>@Html.DisplayFor(model => model.Description)</p>
+        </div>
+        <div class="btnDetailsSection">
+            <button type="button" class="btn btn-info">
+                <a asp-action="Edit" asp-route-id="@Model?.ID">Редагувати</a>
+            </button>
+            <button type="button" class="btn btn-danger">
+                <a asp-action="Delete" asp-route-id="@Model?.ID">Видалити</a>
+            </button>
+            <button class="btn btn-primary">
+                <a asp-action="Index">Назад до списку</a>
+            </button>
+        </div>
+      
+    </section>
+       
+
+   
+</section>

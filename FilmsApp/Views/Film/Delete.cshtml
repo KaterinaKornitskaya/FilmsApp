@@ -1,0 +1,26 @@
+﻿@model FilmsApp.Models.Film
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<section class="filmDetails">
+    <div>
+        <div>
+            <p>
+                Видалити фільм @Html.DisplayFor(model => model.Name), @Html.DisplayFor(model => model.Year)?
+            </p>
+        </div>
+       
+        <div >
+            <form asp-action="Delete" class="divBtnsDelete">
+                <input type="hidden" asp-for="ID" />
+                <input type="submit" value="Так, видалити" class="btn btn-danger" />
+                <button class="btn btn-primary">
+                    <a asp-action="Index">Ні, назад до списку</a>
+                </button>
+            </form>
+        </div>
+    </div>
+</section>

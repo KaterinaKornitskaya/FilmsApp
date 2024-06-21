@@ -1,0 +1,62 @@
+﻿@model FilmsApp.Models.Film
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="sectionForm">
+    <form asp-action="Edit" method="post" enctype="multipart/form-data" class="editForm">
+        <div>
+            <input type="hidden" asp-for="ID" />
+        </div>
+        <div>
+            <label>@Html.DisplayNameFor(model => model.Name)</label>
+            <input type="text" asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger" />
+        </div>
+        <div>
+            <label>@Html.DisplayNameFor(model => model.Year)</label>
+            <input type="text" asp-for="Year" class="form-control" />
+            <span asp-validation-for="Year" class="text-danger" />
+        </div>
+        <div>
+            <label>@Html.DisplayNameFor(model => model.Genre)</label>
+            <input type="text" asp-for="Genre" class="form-control" />
+            <span asp-validation-for="Genre" class="text-danger" />
+        </div>
+        <div>
+            <label>@Html.DisplayNameFor(model => model.Director)</label>
+            <input type="textarea" asp-for="Director" class="form-control" />
+            <span asp-validation-for="Director" class="text-danger" />
+        </div>
+        <div>
+            <label>@Html.DisplayNameFor(model => model.Actors)</label>
+            <input type="text" asp-for="Actors" class="form-control" />
+            <span asp-validation-for="Actors" class="text-danger" />
+        </div>
+        <div>
+            <label>@Html.DisplayNameFor(model => model.Description)</label>
+            <textarea asp-for="Description" class="form-control" rows="5">
+                @Html.DisplayFor(model => model.Description)
+            </textarea>
+            <span asp-validation-for="Description" class="text-danger" />
+        </div>
+        <div>
+            <label>@Html.DisplayNameFor(model => model.Image)</label>
+        </div>
+        <div>
+            <input type="file" name="uploadedFile" asp-for="Image" />
+            <span asp-validation-for="Image" class="text-danger" />
+        </div>
+        <div>
+            <input type="submit" value="Редагувати" class="btn btn-primary" />
+        </div>
+    </form>
+</section>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
