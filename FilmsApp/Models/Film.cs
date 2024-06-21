@@ -4,7 +4,7 @@ namespace FilmsApp.Models
 {
     public class Film
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
 
         [Required(ErrorMessage = "Поле не може бути пустим")]
         [Display(Name = "Назва")]

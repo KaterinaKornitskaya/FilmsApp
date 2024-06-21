@@ -29,7 +29,7 @@ namespace FilmsApp.Controllers
             if(id==null)
                 return NotFound();
 
-            var film = await filmContext.Films.FirstOrDefaultAsync(e=>e.ID==id);
+            var film = await filmContext.Films.FirstOrDefaultAsync(e=>e.Id==id);
 
             if(film==null)
                 return NotFound();
@@ -42,7 +42,7 @@ namespace FilmsApp.Controllers
         {
             if (id==null)
                 return NotFound();
-            var film = await filmContext.Films.FirstOrDefaultAsync(e => e.ID == id);
+            var film = await filmContext.Films.FirstOrDefaultAsync(e => e.Id == id);
 
             if(film==null)
                 return NotFound();
@@ -55,7 +55,7 @@ namespace FilmsApp.Controllers
         {
             if (id==null)
                 return NotFound();
-            var film = await filmContext.Films.FirstOrDefaultAsync(e => e.ID == id);
+            var film = await filmContext.Films.FirstOrDefaultAsync(e => e.Id == id);
 
             if( film==null)
                 return NotFound();
@@ -71,7 +71,7 @@ namespace FilmsApp.Controllers
         {
             if (id==null)
                 return NotFound();
-            var film = await filmContext.Films.FirstOrDefaultAsync(e => e.ID==id);
+            var film = await filmContext.Films.FirstOrDefaultAsync(e => e.Id==id);
             if(film==null)
                 return NotFound();
             return View(film);
@@ -84,7 +84,7 @@ namespace FilmsApp.Controllers
             [Bind("ID, Name, Year, Director, Actors, Genre, Description, Image")] Film film,
             IFormFile? uploadedFile)
         {
-            if (id != film.ID)
+            if (id != film.Id)
                 return NotFound();
           
             if (ModelState.IsValid)
@@ -106,7 +106,7 @@ namespace FilmsApp.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!filmContext.Films.Any(e=>e.ID==id))
+                    if (!filmContext.Films.Any(e=>e.Id==id))
                     {
                         return NotFound();
                     }
